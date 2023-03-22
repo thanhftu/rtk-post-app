@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchPost } from "../redux/slice/postsSlice";
 import "./Form.css";
 const SearchPost = () => {
   //search form state
   const [search, setSearch] = React.useState("");
+  const dispatch = useDispatch()
+
   //search form submit handler
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(searchPost(search))
   };
 
   return (
